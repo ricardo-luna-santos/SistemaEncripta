@@ -1,0 +1,56 @@
+
+{% extends "./base.html" %}
+{% block title %} Gestión de usuarios {% endblock %}
+{% block body %}
+{% load static %}
+<div class="row">
+  <div class="container">
+    <br>
+    <div class="row">
+     <div class="col-6">
+        <form id="login-form" class="form" enctype="multipart/form-data" method="post" action="/cargar/">{% csrf_token %}
+          <h3 class="text-center text-info">Desencriptar mensaje</h3>
+          <center><img src="{% static 'imagenes/desencriptar.png' %}" width="50%"/></center>
+          <hr>
+            <div class="form-group">
+              <label for="formFileLg" class="form-label">Abrir archivo encriptado</label>
+              <input class="form-control form-control-lg" id="myfile" name="myfile" type="file">
+            </div>
+              <hr>
+            <div class="form-group">
+              <button type="submit" class="btn btn-info btn-md text-white">Subir</button>
+            </div>
+          <br>
+      </form>
+      <hr>
+      {% if uploaded_file_url %}<p>Archivo subido en: <a href="{{uploaded_file_url}}">{{uploaded_file_url}}</a></p>{% endif %}
+    </div>
+    <div class="col-6 hoja">
+      <h3 class="text-center text-info">Mensajes</h3>
+      <div class="table-responsive">
+      <table class="table table-dark table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Descargar y desencriptar</th>
+            <th scope="col">Enviar</th>
+            <th scope="col">Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for m in mensajes %}
+          <tr>
+            <td>{{m.fecha}}</td>
+            <td><a href="/descargardes/{{m.Mensaje}}/{{m.Key}}"><i class="bi bi-file-arrow-down"></i></a></td>          
+            <td><i class="bi bi-send"></i></td>
+            <td><a href="/eliminarMensaje/{{m.id}}"><i class="bi bi-archive"></i></a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    </div>
+   </div>
+ </div>
+</div>
+{% endblock %}

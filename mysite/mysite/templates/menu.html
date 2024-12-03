@@ -1,0 +1,15 @@
+
+{% extends "./base.html" %}
+{% block title %} Gestión de usuarios {% endblock %}
+{% block body %}
+{% load static %}
+<div class="row">
+  <div class="container">
+    <br>
+    <div class="row">
+     <div class="col-6"><a href="/encriptar/"><img src="{% static 'imagenes/encriptar.png' %}" width="200px"/><br>Encriptar</a></div>
+     <div class="col-6"><a href="/desencriptar/"><img src="{% static 'imagenes/desencriptar.png' %}" width="200px"/><br>Desencriptar</a></div>
+   </div>
+ </div>   
+</div>
+{% endblock %}

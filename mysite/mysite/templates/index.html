@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguridad de la información</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+</head>
+
+<!------ Include the above in your HEAD tag ---------->
+<body>
+    <div id="login">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="/login/" method="post">{% csrf_token %}
+                            <h3 class="text-center text-info">Acceso</h3>
+                            <img src="{% static 'imagenes/login.png' %}" width="100%"/>
+                            <hr>
+                            <div class="form-group">
+                                <label for="usuario" class="text-info">Nombre de usuario:</label><br>
+                                <input type="text" name="usuario" id="usuario" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="contrasena" class="text-info">Contraseña:</label><br>
+                                <input type="password" name="contrasena" id="contrasena" class="form-control">
+                            </div>
+                            <br>
+                            <hr>
+                            <br>
+                            <div class="form-group">
+                                <label for="remember-me" class="text-info"><span>Recordar datos</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Enviar datos">
+                            </div>
+                            <div id="register-link" class="text-right">
+                                <a href="/registrar" class="text-info">Registrate aqui</a><br>
+                                <a href="/recordar" class="text-info">Recuperar contraseña</a>
+                            </div>
+                            <br>
+                            <br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
